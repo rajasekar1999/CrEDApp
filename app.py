@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request,redirect,url_for
 import dbops
 
-app = Flask(__name__, template_folder='templates')s
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def Home():
