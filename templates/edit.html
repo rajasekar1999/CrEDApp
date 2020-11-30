@@ -11,28 +11,28 @@
 </head>
 <body style="background-color: lightgreen;">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="http://localhost:5000/">
+        <a class="navbar-brand" href="/">
             CrED
         </a>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:5000/create">
+                        <a class="nav-link" href="/create">
                             Create
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:5000/edit">
+                        <a class="nav-link" href="/edit">
                             Edit
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:5000/delete">
+                        <a class="nav-link" href="/delete">
                             Delete
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:5000/view">
+                        <a class="nav-link" href="/view">
                             View
                         </a>
                     </li>
@@ -43,7 +43,7 @@
         <center>
             <h3>Edit the Article</h3>
         </center>
-            <form action = "http://localhost:5000/update" method = "POST">
+            <form action = "/update" method = "POST">
                 <label for="State" style="margin-left: 10px;"><b>Title of the Article:</b></label>
             <div class="form-group" style="width: 675px; margin-left: 10px;">
               <center><input type="text" class="form-control" readonly="readonly" name="title" value= {{res[0]}}  ></center>
