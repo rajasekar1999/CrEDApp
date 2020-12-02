@@ -46,7 +46,10 @@ def delete():
 def deleted():
     if request.method == 'POST':
         result = request.form.to_dict()
-        dbops.DeleteContent(result['index'])
+        if result['deleteall'] == 'on':
+            dbops.DeleteAll()
+        else:
+            dbops.DeleteContent(result['index'])
         return redirect(url_for('Home'))
 
 @app.route('/update',methods=['POST','GET'])

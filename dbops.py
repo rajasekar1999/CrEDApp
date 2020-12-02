@@ -44,3 +44,8 @@ def FetchArticle(tit):
     lis = [cursor[0][0],cursor[0][1],cursor[0][2]]
     print(lis)
     return lis
+
+def DeleteAll():
+    conn = sqlite3.connect(con)
+    conn.execute(f"DELETE FROM CONTENT")
+    conn.commit()
