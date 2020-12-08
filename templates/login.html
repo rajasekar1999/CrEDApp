@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Hello, world!</title>
+
+      <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+
+
+  </head>
+  
+  <body style="background: lightgreen;">
+  <div style="width: 70%; margin-left:15%; margin-right:15%; margin-top:5%; float: left;">
+      <center>
+        <img src="https://bit.ly/3oqtNl1" width="200px" height="100px">
+      </center>
+    <div class="jumbotron" style="width: 80%;margin-left:10%; margin-right:10%;">
+      
+  <div class="form-group" style="margin-left: 25%; margin-right: 25%;">
+    <center><h3>Login</h3></center>
+    <br>
+    <label>Username</label>
+    <input type="text" id="username" style="width: 100%;" class="form-control"><br>
+    <label>Password</label>
+    <input type="password" id="password" style="width: 100%;" class="form-control"><br>
+      <input type="checkbox" id="signedin"> <label>Keep me signed in</label>
+  </div>
+
+  <center>
+    <button id="login" class="btn btn-dark">Login</button><br><br>
+  </center>
+  </form>
+  <center>
+    <button onclick="gotoRegister()" class="btn btn-dark">New User? Register</button>
+  </center>
+    </div>
+  </div>
+
+    <script>
+      function gotoRegister() {
+        window.location.href = "register.html";
+      }
+
+      var firebaseConfig = {
+        apiKey: "AIzaSyBxnQBN7OrZuUZlVNJfjoIf4zHnaL4POCI",
+        authDomain: "cred-app.firebaseapp.com",
+        projectId: "cred-app",
+        storageBucket: "cred-app.appspot.com",
+        messagingSenderId: "771848367291",
+        appId: "1:771848367291:web:f0be321286c2e34475cd9e",
+        measurementId: "G-29WDZQCDZ4"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      
+      document.getElementById('login').onclick = function() {
+        var usernamev = document.getElementById('username').value;
+        var passwordv = document.getElementById('password').value;
+        alert(firebase.database().ref('users/'+usernamev));
+        alert(usernamev+passwordv);
+        firebase.database().ref('users/'+usernamev).on('value',function(snapshot){
+          var passwordt = snapshot.val().password;
+          alert(passwordt);
+          if(passwordv == passwordt)
+          {
+            window.location.href = "https://cred-app.herokuapp.com/";
+          }
+          else
+          {
+            alert('invalid Username or Password');
+          }
+        });
+      }
+
+
+    </script>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
